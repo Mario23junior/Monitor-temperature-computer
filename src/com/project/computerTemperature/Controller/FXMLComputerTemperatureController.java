@@ -1,5 +1,7 @@
 package com.project.computerTemperature.Controller;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -25,7 +27,9 @@ class TemperaureReader implements Runnable {
 	public void run() {
 		try {
 			Process proc = Runtime.getRuntime().exec("sensors");
-       
+			BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+			
+			
 		} catch (Exception ex) {
 			Logger.getLogger(FXMLComputerTemperatureController.class.getName()).log(Level.SEVERE,null,ex);
  		}
