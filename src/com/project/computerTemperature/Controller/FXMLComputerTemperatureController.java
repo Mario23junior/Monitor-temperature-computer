@@ -18,16 +18,16 @@ public class FXMLComputerTemperatureController implements Initializable {
 
 	@FXML
 	private ScatterChart<Number, Number> lineChart;
-	XYChart.Series<Number, Number> series, series1,series2;
+	XYChart.Series<Number, Number> series, series1, series2;
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle rb) {
+	public void initialize(URL url, ResourceBundle rb) {
 		series = new XYChart.Series<>();
+		series.setName("Data 0");
+		series1 = new XYChart.Series<>();
 		series.setName("Data 1");
-		series = new XYChart.Series<>();
+		series2 = new XYChart.Series<>();
 		series.setName("Data 2");
-		series = new XYChart.Series<>();
-		series.setName("Data 3");
 		
 		Thread th = new Thread(new TemperaureReader());
 		th.start();
@@ -47,16 +47,15 @@ class TemperaureReader implements Runnable {
 				Process proc = Runtime.getRuntime().exec("sensors");
 				BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
 				
-				String line = " ";
+				String line = "";
 				while ((line = reader.readLine()) != null) {
 					Matcher m = p.matcher(line);
 					if(m.find()) {
-						System.out.println("Matematica erro = "+ m.group());
+						System.out.println("Match erro = "+ m.group());
 					}
 					
-					System.out.println(line);
-				}
-				System.out.println("-");
+ 				}
+				System.out.println("------------------------------");
 				Thread.sleep(2000);
 			}
 
