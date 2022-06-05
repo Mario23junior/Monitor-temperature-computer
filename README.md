@@ -1,5 +1,5 @@
  
-<h1 align="center">Mars experimento 3D</h1>
+<h1 align="center">Monitor Temperature computer</h1>
 
 <h3 align="center">Gráfico experimental de monitoramento de temperatura do monitor.</h3>
 
